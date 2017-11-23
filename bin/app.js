@@ -9,5 +9,5 @@ fastify.get('/keepalive', function (request, reply) {
 
 fastify.listen(5432, function (err) {
     if (err) throw err
-    console.log(`server listening on ${fastify.server.address().port}`)
+    console.log('Fastify http listening on ', fastify.server.address().port)
 })
