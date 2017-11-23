@@ -7,9 +7,14 @@ module.exports = {
     let server = store.server[sPort]
     if (!server || !server.connections) return
     let sc = server.connections
-    for (let s in sc) {
-      sc[s] && sc[s].write(data)
-    }
+    let s = null
+    for (s in sc) break;
+    if (!s || !sc[s]) return
+
+
+    // for (let s in sc) {
+    //   sc[s] && sc[s].write(data)
+    // }
   },
   fromServer (sock, data) {
     let tPort = store.t_start + sock.localPort - store.s_start
@@ -17,8 +22,13 @@ module.exports = {
     if (!terminal) return
     if (!terminal || !terminal.connections) return
     let tc = terminal.connections
-    for (let t in tc) {
-      tc[t] && tc[t].write(data)
-    }
+    let t = null
+    for (t in tc) break;
+    if (!t || !tc[t]) return
+
+
+    // for (let t in tc) {
+    //   tc[t] && tc[t].write(data)
+    // }
   }
 }
